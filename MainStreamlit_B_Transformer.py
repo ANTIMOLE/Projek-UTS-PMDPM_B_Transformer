@@ -76,8 +76,7 @@ if selected == 'Klasifikasi':
         col1, col2 = st.columns(2)
         with col1:
             citycode = st.text_input('🏙️ Kode Lokasi (City Code)')
-        with col2:
-            price = st.number_input('💰 Harga (dalam mata uang yang sesuai)', 0.0)
+        
 
         if hasyard == 'Ya':
                 onehotencoder__hasyard_no = 0
@@ -112,7 +111,7 @@ if selected == 'Klasifikasi':
             
         input_data = [[onehotencoder__hasyard_no, onehotencoder__hasyard_yes, onehotencoder__haspool_no, onehotencoder__haspool_yes, onehotencoder__isnewbuilt_new, onehotencoder__isnewbuilt_old, 
                onehotencoder__hasstormprotector_no, onehotencoder__hasstormprotector_yes, onehotencoder__hasstorageroom_no, onehotencoder__hasstorageroom_yes, squaremeters, numberofrooms,
-               floors, citycode, citypartrange, numprevowners, made, basement, attic, garage, hasguestroom, price]]
+               floors, citycode, citypartrange, numprevowners, made, basement, attic, garage, hasguestroom]]
 
         if st.button("🔍 Prediksi"):
             rf_model_predict = rf_model.predict(input_data)
@@ -177,8 +176,7 @@ if selected == 'Regresi':
         col1, col2 = st.columns(2)
         with col1:
             citycode = st.text_input('🏙️ Kode Lokasi (City Code)')
-        with col2:
-            category = st.selectbox('Kategori Properti', ['Basic', 'Middle', 'Luxury'])
+        
             
         
 
@@ -212,21 +210,10 @@ if selected == 'Regresi':
         elif hasstorageroom == 'Tidak':
                 onehotencoder__hasstorageroom_no = 1
                 onehotencoder__hasstorageroom_yes = 0
-        if category == 'Basic':
-                onehotencoder__category_Basic = 1
-                onehotencoder__category_Luxury = 0
-                onehotencoder__category_Middle = 0
-        elif category == 'Middle':
-                onehotencoder__category_Basic = 0
-                onehotencoder__category_Luxury = 0
-                onehotencoder__category_Middle = 1
-        elif category == 'Luxury':
-                onehotencoder__category_Basic = 0
-                onehotencoder__category_Luxury = 1
-                onehotencoder__category_Middle = 0
+        
             
         input_data = [[onehotencoder__hasyard_no, onehotencoder__hasyard_yes, onehotencoder__haspool_no, onehotencoder__haspool_yes, onehotencoder__isnewbuilt_new, onehotencoder__isnewbuilt_old, 
-               onehotencoder__hasstormprotector_no, onehotencoder__hasstormprotector_yes, onehotencoder__hasstorageroom_no, onehotencoder__hasstorageroom_yes, onehotencoder__category_Basic, onehotencoder__category_Luxury, onehotencoder__category_Middle,squaremeters, numberofrooms,
+               onehotencoder__hasstormprotector_no, onehotencoder__hasstormprotector_yes, onehotencoder__hasstorageroom_no, onehotencoder__hasstorageroom_yes,squaremeters, numberofrooms,
                floors, citycode, citypartrange, numprevowners, made, basement, attic, garage, hasguestroom]]  # Contoh untuk disederhanakan
 
         if st.button("💸 Prediksi Harga"):
