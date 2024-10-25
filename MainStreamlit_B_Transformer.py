@@ -41,8 +41,8 @@ if selected == 'Klasifikasi':
         except ValueError as e:
               st.markdown("<h3 style='text-align : center' font-color: red> !!⚠️ An error occurred while reading the file ⚠️!! </h3>", unsafe_allow_html=True)
     # Lokasi model
-    model_directory = r'E:\clone\Project'
-    model_path = os.path.join(model_directory, r'BestModel_CLF_RFC_NamaSB.pkl')
+    
+    model_path = 'BestModel_CLF_RFC_NamaSB.pkl'
 
     if os.path.exists(model_path):
         with open(model_path, 'rb') as f:
