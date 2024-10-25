@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 import os
+import streamlit_option_menu
 from streamlit_option_menu import option_menu
 
 # Navigasi sidebar dengan warna dan style custom
